@@ -1,0 +1,33 @@
+const http = require('http')
+const urlmod = require('url')
+const fs = require('fs')
+
+http.createServer((req, res) => {
+    
+    const address = urlmod.parse(req.url, true)
+    const filename = '.' + address.pathname
+
+    if (filename === '.' || filename === './') {
+        fs.readFile('./index.html', (err, data) => {
+            if (!err) {
+                res.writeHead(200, { 'Content-type': 'text/html' })
+                return res.end(data)
+            }
+            fs.readFile('./404.html', (err, data) => {
+                res.writeHead(404, { 'Content-type': 'text/html' })
+                return res.end(data)
+            })
+        })
+    } else {
+        fs.readFile(filename, (err, data) => {
+            if (!err) {
+                res.writeHead(200, { 'Content-type': 'text/html' })
+                return res.end(data)
+            }
+            fs.readFile('./404.html', (err, data) => {
+                res.writeHead(404, { 'Content-type': 'text/html' })
+                return res.end(data)
+            })
+        })
+    }
+}).listen(8080)
