@@ -10,7 +10,7 @@ http.createServer((req, res) => {
     if (filename === '.' || filename === './') {
         fs.readFile('./index.html', (err, data) => {
             if (!err) {
-                res.writeHead(200, { 'Content-type': 'text/html' })
+                res.writeHead(302, { 'Content-type': 'text/html', 'Location':'./index.html' })
                 return res.end(data)
             }
             fs.readFile('./404.html', (err, data) => {
