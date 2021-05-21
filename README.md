@@ -1,4 +1,4 @@
-# NodeJS Server Exercise
+# My First NodeJS Server
 
 This is an exercise to make a NodeJS server.
 
