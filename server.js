@@ -10,11 +10,11 @@ http.createServer((req, res) => {
     if (filename === '.' || filename === './') {
         fs.readFile('./index.html', (err, data) => {
             if (!err) {
-                res.writeHead(302, { 'Content-type': 'text/html', 'Location':'./index.html' })
+                res.writeHead(302, { 'Content-type': 'text/html', 'Location':'/index.html' })
                 return res.end(data)
             }
             fs.readFile('./404.html', (err, data) => {
-                res.writeHead(404, { 'Content-type': 'text/html' })
+                res.writeHead(404, { 'Content-type': 'text/html', 'Location':'/404.html' })
                 return res.end(data)
             })
         })
@@ -25,7 +25,7 @@ http.createServer((req, res) => {
                 return res.end(data)
             }
             fs.readFile('./404.html', (err, data) => {
-                res.writeHead(404, { 'Content-type': 'text/html' })
+                res.writeHead(404, { 'Content-type': 'text/html', 'Location':'/404.html' })
                 return res.end(data)
             })
         })
