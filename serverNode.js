@@ -2,7 +2,7 @@ const http = require('http')
 const urlmod = require('url')
 const fs = require('fs')
 
-http.createServer((req, res) => {
+const serverCallback = (req, res) => {
     
     const address = urlmod.parse(req.url, true)
     const filename = '.' + address.pathname
@@ -30,4 +30,6 @@ http.createServer((req, res) => {
             })
         })
     }
-}).listen(8080)
+}
+
+http.createServer(serverCallback).listen(8080)
