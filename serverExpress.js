@@ -1,4 +1,7 @@
 const express = require('express')
+
+// app
+
 const app = express()
 
 // listen on port:
@@ -26,7 +29,7 @@ app.get('/contact-me.html', (req, res) => {
 // redirects
 
 app.get('/', (req, res) => {
-    res.redirect('/index.html')
+    res.status(302).redirect('/index.html')
 })
 
 // 404 
